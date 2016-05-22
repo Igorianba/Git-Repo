@@ -24,6 +24,7 @@ namespace Snake
 
             Console.ReadLine();
         }
+
         static void Draw(int x, int y, char sym)
         {
             Console.SetCursorPosition(x, y);
