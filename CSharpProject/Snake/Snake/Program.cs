@@ -8,6 +8,8 @@ namespace Snake
 {
     class Program
     {
+        public static object Thread { get; private set; }
+
         static void Main(string[] args)
         {
             Console.SetWindowSize(80, 25);
@@ -17,7 +19,6 @@ namespace Snake
             HorizontalLine line2 = new HorizontalLine(0, 78, 24, '+');
             VerticalLine line3 = new VerticalLine(0, 24, 0, '+');
             VerticalLine line4 = new VerticalLine(0, 24, 78, '+');
-            
             line1.Draw();
             line2.Draw();
             line3.Draw();
@@ -26,8 +27,20 @@ namespace Snake
             Point p = new Point(4, 5, '*');
             Snake snake = new Snake(p, 4, Direction.RIGHT);
             snake.Draw();
-
-            Console.ReadLine();
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
+            snake.Move(); ;
+            System.Threading.Thread.Sleep(300);
         }
     }
 }
