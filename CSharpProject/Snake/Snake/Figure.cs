@@ -8,11 +8,11 @@ namespace Snake
 {
     class Figure
     {
-        protected List<Point> pList;
+        protected List<Point> plist;
 
         public void Draw()
         {
-            foreach (Point p in pList)
+            foreach (Point p in plist)
             {
                 p.Draw();
             }
