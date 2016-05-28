@@ -21,10 +21,7 @@ namespace Snake
                 p.Move(i, direction);
                 plist.Add( p );
             }
-                
-
         }
-
         internal void Move()
         {
             Point tail = plist.First();
