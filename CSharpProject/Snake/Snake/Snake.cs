@@ -39,6 +39,17 @@ namespace Snake
             nextPoint.Move (1,direction);
             return nextPoint;
         }
+
+        internal bool IsHitTail()
+        {
+            var Head = plist.Last();
+            for (int i = 0; i <plist.Count -2; i++)
+            {
+                if (Head.IsHit(plist[i]))
+                    return true;
+            }
+            return false;
+        }
         public void HandleKey (ConsoleKey key)
         {
             if (key == ConsoleKey.LeftArrow)
@@ -61,6 +72,15 @@ namespace Snake
             }
             else
                 return false;
+        }
+        public override void Draw()
+        {
+            foreach (Point head in plist)
+            {
+                Console.ForegroundColor = ConsoleColor.Red;
+                base.Draw();
+            }
+            
         }
     }
 }
