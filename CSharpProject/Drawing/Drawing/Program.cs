@@ -149,6 +149,7 @@ namespace Drawing
         static DrawMan man1 = new DrawMan(200, 400, 0);
         static DrawMan man2 = new DrawMan(400, 400, 0);
         static DrawMan man3 = new DrawMan(600, 400, 0);
+        static DrawMan man4 = new DrawMan(800, 400, 0);
 
         public static void Timer_Tick()
         {
@@ -156,6 +157,7 @@ namespace Drawing
             Figure(man1, 5);
             Figure(man2, 5);
             Figure(man3, -5);
+            Figure(man4, -5);
         }
     }
 }
