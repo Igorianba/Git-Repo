@@ -19,6 +19,7 @@ namespace Drawing
         static void Gradient()
         {
             Basic.GraphicsWindow.Height = 255 + 255 + 255;
+            Basic.GraphicsWindow.Width = 1000;
             for (int i = 0; i < 255; i++)
             {
                 Basic.GraphicsWindow.PenColor = Basic.GraphicsWindow.GetColorFromRGB(i, 0, 0);
@@ -69,16 +70,18 @@ namespace Drawing
                 System.Threading.Thread.Sleep(50);
             }
         }
-        static void Clock(double radius)
+        static void Evolvent(double radius)
         {
             double x, y;
+            Gradient();
             for (int angle = 0; angle <= 360; angle++)
             {
                 Basic.GraphicsWindow.PenColor = Basic.GraphicsWindow.GetColorFromRGB(0, angle / 2, angle / 2);
-                x = (radius * Math.Cos(Math.PI / 180 * angle));
-                y = (radius * Math.Sin(Math.PI / 180 * angle));
-                Basic.GraphicsWindow.SetPixel(100 + x, 100 + y, "Red");
-                Basic.GraphicsWindow.DrawLine(300, 300, 300 + x, 300 + y);
+                x = (radius * Math.Cos(Math.PI / 180 * angle) + radius * (Math.PI / 180 * angle)* Math.Sin(Math.PI / 180 * angle));
+                y = (radius * Math.Sin(Math.PI / 180 * angle) - radius * (Math.PI / 180 * angle) * Math.Cos(Math.PI / 180 * angle));
+                //Basic.GraphicsWindow.SetPixel(300 + x, 300 + y, "Red");
+                Basic.GraphicsWindow.DrawLine(300, 400, 300 + x, 400 + y);
+                Basic.GraphicsWindow.DrawLine(700, 400, 700 - x, 400 - y);
                 System.Threading.Thread.Sleep(10);
             }
         }
@@ -124,39 +127,35 @@ namespace Drawing
         static void Animation()
         {
             for (int k = 0; k < 360; k++)
-            {
-                Basic.GraphicsWindow.Clear();
-                System.Threading.Thread.Sleep(20);
-            }
+                {
+                    Basic.GraphicsWindow.Clear();
+                    System.Threading.Thread.Sleep(20);
+                }  
         }
         static void Main (string[] args)
         {
-            Color();
-            Gradient();
+            //Color();
+            //Gradient();
             //Colors16M();
-
             Basic.Sound.Play("D:\\My Music\\Music\\Чувава .mp3");
-            //Clock(100);
+            Evolvent(50);
+            Evolvent(-50);
+            Evolvent(100);
+            Evolvent(-100);
             Basic.Timer.Interval = 100;
             Basic.Timer.Tick += Timer_Tick;
         }
 
-        static DrawMan man = new DrawMan(200, 200, 0);
-        static DrawMan man1 = new DrawMan(400, 200, 0);
-        static DrawMan man2 = new DrawMan(200, 400, 0);
-        static DrawMan man3 = new DrawMan(400, 400, 0);
-        static DrawMan man4 = new DrawMan(200, 600, 0);
-        static DrawMan man5 = new DrawMan(400, 600, 0);
+        static DrawMan man1 = new DrawMan(200, 400, 0);
+        static DrawMan man2 = new DrawMan(400, 400, 0);
+        static DrawMan man3 = new DrawMan(600, 400, 0);
 
-        private static void Timer_Tick()
+        public static void Timer_Tick()
         {
             Basic.GraphicsWindow.Clear();
-            Figure(man,5);
-            Figure(man1,-5);
+            Figure(man1, 5);
             Figure(man2, 5);
             Figure(man3, -5);
-            Figure(man4, 5);
-            Figure(man5, -5);
         }
     }
 }
