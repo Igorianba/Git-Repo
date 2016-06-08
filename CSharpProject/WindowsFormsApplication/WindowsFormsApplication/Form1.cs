@@ -14,14 +14,15 @@ namespace WindowsFormsApplication
     {
         int count = 0;
         Random rnd;
-
+        char[] special_chars = new char[] {'#','$','%','@','&','*'};
     
         public MainForm()
         {
             InitializeComponent();
             rnd = new Random();
         }
-    
+        #region Menu
+
         private void tsmiExit_Click(object sender, EventArgs e)
         {
             this.Close();
@@ -32,6 +33,8 @@ namespace WindowsFormsApplication
             MessageBox.Show("My Utilities program contains a number of small programs that can be useful in life.\nAuthor: Berdyshev Igor", "About programme");
         }
 
+        #endregion
+        #region Counter
         private void btnPlus_Click(object sender, EventArgs e)
         {
             count++;
@@ -49,7 +52,8 @@ namespace WindowsFormsApplication
             count = 0;
             lblCount.Text = Convert.ToString (count);
         }
-
+        #endregion
+        #region Generator
         private void btnRandom_Click(object sender, EventArgs e)
         {
             int n;
@@ -79,5 +83,79 @@ namespace WindowsFormsApplication
         {
             Clipboard.SetText(tbRandom.Text);
         }
+        #endregion
+        #region Notebook
+        private void tsmiInsertDate_Click(object sender, EventArgs e)
+        {
+            rtbNotebook.AppendText(DateTime.Now.ToShortDateString() + "\n");
+        }
+
+        private void tsmiInsertTime_Click(object sender, EventArgs e)
+        {
+            rtbNotebook.AppendText(DateTime.Now.ToShortTimeString() + "\n");
+        }
+
+        private void tsmiSave_Click(object sender, EventArgs e)
+        {
+            try
+            {
+                rtbNotebook.SaveFile("Notebook.rtf");
+            }
+            catch
+            {
+                MessageBox.Show("Saving Error");
+            }
+            
+        }
+        void LoadNotebook()
+        {
+            try
+            {
+                rtbNotebook.LoadFile("Notebook.rtf");
+            }
+            catch
+            {
+                MessageBox.Show("Loading Error");
+            }
+        }
+
+        private void tsmiLoad_Click(object sender, EventArgs e)
+        {
+            LoadNotebook();
+        }
+        #endregion
+        private void MainForm_Load(object sender, EventArgs e)
+        {
+            LoadNotebook();
+            clbPassword.SetItemChecked(0, true);
+            clbPassword.SetItemChecked(1, true);
+        }
+        #region Passwords
+        private void btnCreatePassword_Click(object sender, EventArgs e)
+        {
+            if (clbPassword.CheckedItems.Count == 0) return;
+            string Password = "";
+            for (int i = 0; i <nudPasswordLength.Value;i++)
+            {
+                int n = rnd.Next(0, clbPassword.CheckedItems.Count);
+                string s = clbPassword.CheckedItems[n].ToString();
+                switch (s)
+                {
+                    case "Figures": Password += rnd.Next(10).ToString();
+                        break;
+                    case "Upper case letters": Password += Convert.ToChar(rnd.Next(65, 88));
+                        break;
+                    case "Lower case letters": Password += Convert.ToChar(rnd.Next(97,122));
+                        break;
+                    default:
+                        Password += special_chars[rnd.Next(special_chars.Length)];
+                        break;
+                }
+                tbPassword.Text = Password;
+                Clipboard.SetText(Password);
+            }
+        }
+        #endregion
+
     }
 }
