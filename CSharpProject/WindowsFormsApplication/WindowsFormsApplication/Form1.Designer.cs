@@ -43,6 +43,10 @@ namespace WindowsFormsApplication
             this.tsmiAbout = new System.Windows.Forms.ToolStripMenuItem();
             this.tabControl1 = new System.Windows.Forms.TabControl();
             this.tabPage4 = new System.Windows.Forms.TabPage();
+            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.btnCreatePassword = new System.Windows.Forms.Button();
+            this.nudPasswordLength = new System.Windows.Forms.NumericUpDown();
+            this.label1 = new System.Windows.Forms.Label();
             this.clbPassword = new System.Windows.Forms.CheckedListBox();
             this.tabPage3 = new System.Windows.Forms.TabPage();
             this.rtbNotebook = new System.Windows.Forms.RichTextBox();
@@ -62,19 +66,24 @@ namespace WindowsFormsApplication
             this.btnReset = new System.Windows.Forms.Button();
             this.btnMinus = new System.Windows.Forms.Button();
             this.btnPlus = new System.Windows.Forms.Button();
-            this.label1 = new System.Windows.Forms.Label();
-            this.nudPasswordLength = new System.Windows.Forms.NumericUpDown();
-            this.btnCreatePassword = new System.Windows.Forms.Button();
-            this.tbPassword = new System.Windows.Forms.TextBox();
+            this.tabPage5 = new System.Windows.Forms.TabPage();
+            this.cbFrom = new System.Windows.Forms.ComboBox();
+            this.cbTo = new System.Windows.Forms.ComboBox();
+            this.btnConvert = new System.Windows.Forms.Button();
+            this.tbFrom = new System.Windows.Forms.TextBox();
+            this.tbTo = new System.Windows.Forms.TextBox();
+            this.btnSwap = new System.Windows.Forms.Button();
+            this.cbMetric = new System.Windows.Forms.ComboBox();
             this.menuStrip1.SuspendLayout();
             this.tabControl1.SuspendLayout();
             this.tabPage4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).BeginInit();
             this.tabPage3.SuspendLayout();
             this.tabPage2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).BeginInit();
             this.tabPage1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).BeginInit();
+            this.tabPage5.SuspendLayout();
             this.SuspendLayout();
             // 
             // menuStrip1
@@ -174,6 +183,7 @@ namespace WindowsFormsApplication
             // 
             // tabControl1
             // 
+            this.tabControl1.Controls.Add(this.tabPage5);
             this.tabControl1.Controls.Add(this.tabPage4);
             this.tabControl1.Controls.Add(this.tabPage3);
             this.tabControl1.Controls.Add(this.tabPage2);
@@ -198,6 +208,54 @@ namespace WindowsFormsApplication
             this.tabPage4.TabIndex = 3;
             this.tabPage4.Text = "Passwords";
             this.tabPage4.UseVisualStyleBackColor = true;
+            // 
+            // tbPassword
+            // 
+            this.tbPassword.Location = new System.Drawing.Point(137, 146);
+            this.tbPassword.Name = "tbPassword";
+            this.tbPassword.Size = new System.Drawing.Size(120, 20);
+            this.tbPassword.TabIndex = 4;
+            // 
+            // btnCreatePassword
+            // 
+            this.btnCreatePassword.Location = new System.Drawing.Point(26, 137);
+            this.btnCreatePassword.Name = "btnCreatePassword";
+            this.btnCreatePassword.Size = new System.Drawing.Size(75, 38);
+            this.btnCreatePassword.TabIndex = 3;
+            this.btnCreatePassword.Text = "Create password";
+            this.btnCreatePassword.UseVisualStyleBackColor = true;
+            this.btnCreatePassword.Click += new System.EventHandler(this.btnCreatePassword_Click);
+            // 
+            // nudPasswordLength
+            // 
+            this.nudPasswordLength.Location = new System.Drawing.Point(137, 103);
+            this.nudPasswordLength.Maximum = new decimal(new int[] {
+            20,
+            0,
+            0,
+            0});
+            this.nudPasswordLength.Minimum = new decimal(new int[] {
+            1,
+            0,
+            0,
+            0});
+            this.nudPasswordLength.Name = "nudPasswordLength";
+            this.nudPasswordLength.Size = new System.Drawing.Size(120, 20);
+            this.nudPasswordLength.TabIndex = 2;
+            this.nudPasswordLength.Value = new decimal(new int[] {
+            6,
+            0,
+            0,
+            0});
+            // 
+            // label1
+            // 
+            this.label1.AutoSize = true;
+            this.label1.Location = new System.Drawing.Point(23, 103);
+            this.label1.Name = "label1";
+            this.label1.Size = new System.Drawing.Size(89, 13);
+            this.label1.TabIndex = 1;
+            this.label1.Text = "Password Length";
             // 
             // clbPassword
             // 
@@ -417,53 +475,103 @@ namespace WindowsFormsApplication
             this.btnPlus.UseVisualStyleBackColor = true;
             this.btnPlus.Click += new System.EventHandler(this.btnPlus_Click);
             // 
-            // label1
+            // tabPage5
             // 
-            this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(23, 103);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(89, 13);
-            this.label1.TabIndex = 1;
-            this.label1.Text = "Password Length";
+            this.tabPage5.Controls.Add(this.cbMetric);
+            this.tabPage5.Controls.Add(this.btnSwap);
+            this.tabPage5.Controls.Add(this.tbTo);
+            this.tabPage5.Controls.Add(this.tbFrom);
+            this.tabPage5.Controls.Add(this.btnConvert);
+            this.tabPage5.Controls.Add(this.cbTo);
+            this.tabPage5.Controls.Add(this.cbFrom);
+            this.tabPage5.Location = new System.Drawing.Point(4, 22);
+            this.tabPage5.Name = "tabPage5";
+            this.tabPage5.Size = new System.Drawing.Size(283, 211);
+            this.tabPage5.TabIndex = 4;
+            this.tabPage5.Text = "Converter";
+            this.tabPage5.UseVisualStyleBackColor = true;
             // 
-            // nudPasswordLength
+            // cbFrom
             // 
-            this.nudPasswordLength.Location = new System.Drawing.Point(137, 103);
-            this.nudPasswordLength.Maximum = new decimal(new int[] {
-            20,
-            0,
-            0,
-            0});
-            this.nudPasswordLength.Minimum = new decimal(new int[] {
-            1,
-            0,
-            0,
-            0});
-            this.nudPasswordLength.Name = "nudPasswordLength";
-            this.nudPasswordLength.Size = new System.Drawing.Size(120, 20);
-            this.nudPasswordLength.TabIndex = 2;
-            this.nudPasswordLength.Value = new decimal(new int[] {
-            6,
-            0,
-            0,
-            0});
+            this.cbFrom.FormattingEnabled = true;
+            this.cbFrom.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbFrom.Location = new System.Drawing.Point(20, 76);
+            this.cbFrom.Name = "cbFrom";
+            this.cbFrom.Size = new System.Drawing.Size(55, 21);
+            this.cbFrom.TabIndex = 0;
+            this.cbFrom.Text = "mm";
             // 
-            // btnCreatePassword
+            // cbTo
             // 
-            this.btnCreatePassword.Location = new System.Drawing.Point(26, 137);
-            this.btnCreatePassword.Name = "btnCreatePassword";
-            this.btnCreatePassword.Size = new System.Drawing.Size(75, 38);
-            this.btnCreatePassword.TabIndex = 3;
-            this.btnCreatePassword.Text = "Create password";
-            this.btnCreatePassword.UseVisualStyleBackColor = true;
-            this.btnCreatePassword.Click += new System.EventHandler(this.btnCreatePassword_Click);
+            this.cbTo.FormattingEnabled = true;
+            this.cbTo.Items.AddRange(new object[] {
+            "mm",
+            "cm",
+            "dm",
+            "m",
+            "km",
+            "mile"});
+            this.cbTo.Location = new System.Drawing.Point(196, 76);
+            this.cbTo.Name = "cbTo";
+            this.cbTo.Size = new System.Drawing.Size(58, 21);
+            this.cbTo.TabIndex = 1;
+            this.cbTo.Text = "mm";
             // 
-            // tbPassword
+            // btnConvert
             // 
-            this.tbPassword.Location = new System.Drawing.Point(137, 146);
-            this.tbPassword.Name = "tbPassword";
-            this.tbPassword.Size = new System.Drawing.Size(120, 20);
-            this.tbPassword.TabIndex = 4;
+            this.btnConvert.Font = new System.Drawing.Font("Microsoft Sans Serif", 9.75F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(204)));
+            this.btnConvert.Location = new System.Drawing.Point(98, 105);
+            this.btnConvert.Name = "btnConvert";
+            this.btnConvert.Size = new System.Drawing.Size(75, 23);
+            this.btnConvert.TabIndex = 2;
+            this.btnConvert.Text = "Convert";
+            this.btnConvert.UseVisualStyleBackColor = true;
+            this.btnConvert.Click += new System.EventHandler(this.btnConvert_Click);
+            // 
+            // tbFrom
+            // 
+            this.tbFrom.Location = new System.Drawing.Point(20, 108);
+            this.tbFrom.Name = "tbFrom";
+            this.tbFrom.Size = new System.Drawing.Size(55, 20);
+            this.tbFrom.TabIndex = 3;
+            this.tbFrom.Text = "1";
+            // 
+            // tbTo
+            // 
+            this.tbTo.Location = new System.Drawing.Point(196, 108);
+            this.tbTo.Name = "tbTo";
+            this.tbTo.ReadOnly = true;
+            this.tbTo.Size = new System.Drawing.Size(58, 20);
+            this.tbTo.TabIndex = 4;
+            // 
+            // btnSwap
+            // 
+            this.btnSwap.Location = new System.Drawing.Point(98, 76);
+            this.btnSwap.Name = "btnSwap";
+            this.btnSwap.Size = new System.Drawing.Size(75, 23);
+            this.btnSwap.TabIndex = 5;
+            this.btnSwap.Text = "<->";
+            this.btnSwap.UseVisualStyleBackColor = true;
+            this.btnSwap.Click += new System.EventHandler(this.btnSwap_Click);
+            // 
+            // cbMetric
+            // 
+            this.cbMetric.FormattingEnabled = true;
+            this.cbMetric.Items.AddRange(new object[] {
+            "Length",
+            "Weight"});
+            this.cbMetric.Location = new System.Drawing.Point(98, 37);
+            this.cbMetric.Name = "cbMetric";
+            this.cbMetric.Size = new System.Drawing.Size(75, 21);
+            this.cbMetric.TabIndex = 6;
+            this.cbMetric.Text = "Length";
+            this.cbMetric.SelectedIndexChanged += new System.EventHandler(this.cbMetric_SelectedIndexChanged);
             // 
             // MainForm
             // 
@@ -481,6 +589,7 @@ namespace WindowsFormsApplication
             this.tabControl1.ResumeLayout(false);
             this.tabPage4.ResumeLayout(false);
             this.tabPage4.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).EndInit();
             this.tabPage3.ResumeLayout(false);
             this.tabPage2.ResumeLayout(false);
             this.tabPage2.PerformLayout();
@@ -488,7 +597,8 @@ namespace WindowsFormsApplication
             ((System.ComponentModel.ISupportInitialize)(this.numericUpDown1)).EndInit();
             this.tabPage1.ResumeLayout(false);
             this.tabPage1.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.nudPasswordLength)).EndInit();
+            this.tabPage5.ResumeLayout(false);
+            this.tabPage5.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -531,6 +641,14 @@ namespace WindowsFormsApplication
         private System.Windows.Forms.Button btnCreatePassword;
         private System.Windows.Forms.NumericUpDown nudPasswordLength;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.TabPage tabPage5;
+        private System.Windows.Forms.TextBox tbTo;
+        private System.Windows.Forms.TextBox tbFrom;
+        private System.Windows.Forms.Button btnConvert;
+        private System.Windows.Forms.ComboBox cbTo;
+        private System.Windows.Forms.ComboBox cbFrom;
+        private System.Windows.Forms.Button btnSwap;
+        private System.Windows.Forms.ComboBox cbMetric;
     }
 }
 
